@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Be My Valentine 💖</title>
+  <title>Be My Valentine 💜</title>
   <style>
     body {
       margin: 0;
@@ -10,7 +10,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb); /* purple gradient */
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
     }
@@ -25,7 +25,7 @@
 
     h1 {
       margin-bottom: 10px;
-      color: #e63946;
+      color: #6a0dad; /* deep purple */
     }
 
     p {
@@ -49,15 +49,15 @@
     }
 
     #yesBtn {
-      background-color: #e63946;
+      background-color: #6a0dad;
       color: white;
       transform: scale(1);
     }
 
     #noBtn {
-      background-color: #adb5bd;
-      color: #333;
-      transform: scale(1); /* Fixed scale */
+      background-color: #b19cd9;
+      color: white;
+      transform: scale(1); /* fixed scale */
     }
 
     .message {
@@ -71,11 +71,11 @@
 <body>
 
   <div class="card">
-    <h1>Hey Loveeeee💕<br>Will you be my Valentine?</h1>
-    <p>I promise good vibes, laughs, and snacks 😌</p>
+    <h1>Hey Loveeeee💜<br>Will you be my Valentine?</h1>
+    <p>I promise good vibes, laughs, and purple magic 😌</p>
 
     <div class="buttons">
-      <button id="yesBtn">Yes 💖</button>
+      <button id="yesBtn">Yes 💜</button>
       <button id="noBtn">No 🙈</button>
     </div>
 
@@ -92,7 +92,7 @@
 
     const persuasionTexts = [
       "Are you sure? 🥺",
-      "We mtoto, ntakuchapaa, finya YES!!! 😏",
+      "We mtoto, finya YES!!! 😏",
       "Baaaabe… 💭",
       "Ni mimi unataka kufanyia hivi? 😇",
       "Huendi Mbinguni wewee 💞",
@@ -106,7 +106,8 @@
     noBtn.addEventListener("click", () => {
       noClicks++;
 
-      yesScale += 0.25; // Only scale the Yes button
+      // Only grow the Yes button, keep No button fixed
+      yesScale += 0.25;
       yesBtn.style.transform = `scale(${yesScale})`;
 
       message.textContent =
@@ -115,7 +116,7 @@
       if (noClicks >= 10) {
         noBtn.style.display = "none";
         yesBtn.style.transform = "scale(2.2)";
-        message.textContent = "No more No’s 😌 The universe has decided 💖";
+        message.textContent = "No more No’s 😌 The universe has decided 💜";
       }
     });
 
@@ -123,7 +124,7 @@
       document.querySelector(".card").innerHTML = `
         <h1>YAYYYY 💘🥰</h1>
         <p style="font-size:18px;">Nilijua tu unanipenda.</p>
-        <p>Happy Valentine’s Day ❤️</p>
+        <p>Happy Valentine’s Day 💜</p>
         <p style="margin-top:15px;">Now screenshot this and send it to me 😏</p>
       `;
     });
