@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Be My Valentine ❤️</title>
+  <title>Be My Valentine 💖</title>
   <style>
     body {
       margin: 0;
@@ -20,18 +20,23 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      max-width: 400px;
+      max-width: 420px;
     }
 
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       color: #e63946;
+    }
+
+    p {
+      color: #666;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
+      margin-top: 30px;
     }
 
     button {
@@ -66,10 +71,11 @@
 <body>
 
   <div class="card">
-    <h1>Will you be my Valentine? 💖</h1>
+    <h1>Hey 💕<br>Will you be my Valentine?</h1>
+    <p>I promise good vibes, laughs, and snacks 😌</p>
 
     <div class="buttons">
-      <button id="yesBtn">Yes 💕</button>
+      <button id="yesBtn">Yes 💖</button>
       <button id="noBtn">No 🙈</button>
     </div>
 
@@ -79,6 +85,7 @@
   <script>
     let yesScale = 1;
     let noScale = 1;
+    let noClicks = 0;
 
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
@@ -86,32 +93,44 @@
 
     const persuasionTexts = [
       "Are you sure? 🥺",
+      "That felt like a misclick 😏",
       "Think again… 💭",
-      "I’ll be really nice, I promise 😇",
+      "I’m actually very nice 😇",
+      "We’d be cute though 💞",
       "This is getting suspicious 👀",
-      "Okay but… we’d be cute though 💞",
-      "You know you want to 😌"
+      "You’re running out of No’s 😬",
+      "Last few chances 😌",
+      "Okay now you’re just teasing 😭",
+      "Alright… decision time 💘"
     ];
 
     noBtn.addEventListener("click", () => {
-      yesScale += 0.2;
-      noScale -= 0.1;
+      noClicks++;
+
+      yesScale += 0.25;
+      noScale -= 0.12;
 
       if (noScale < 0.3) noScale = 0.3;
 
       yesBtn.style.transform = `scale(${yesScale})`;
       noBtn.style.transform = `scale(${noScale})`;
 
-      const randomText =
-        persuasionTexts[Math.floor(Math.random() * persuasionTexts.length)];
-      message.textContent = randomText;
+      message.textContent =
+        persuasionTexts[Math.min(noClicks - 1, persuasionTexts.length - 1)];
+
+      if (noClicks >= 10) {
+        noBtn.style.display = "none";
+        yesBtn.style.transform = "scale(2.2)";
+        message.textContent = "No more No’s 😌 The universe has decided 💖";
+      }
     });
 
     yesBtn.addEventListener("click", () => {
       document.querySelector(".card").innerHTML = `
-        <h1>Yayyyy!! 💘🥰</h1>
-        <p>You just made my day ❤️</p>
-        <p>Happy Valentine’s Day!</p>
+        <h1>YAYYYY 💘🥰</h1>
+        <p style="font-size:18px;">You just made me smile like crazy.</p>
+        <p>Happy Valentine’s Day ❤️</p>
+        <p style="margin-top:15px;">Now screenshot this and send it to me 😏</p>
       `;
     });
   </script>
