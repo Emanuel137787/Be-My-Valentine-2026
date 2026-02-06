@@ -57,7 +57,7 @@
     #noBtn {
       background-color: #adb5bd;
       color: #333;
-      transform: scale(1);
+      transform: scale(1); /* Fixed scale */
     }
 
     .message {
@@ -84,7 +84,6 @@
 
   <script>
     let yesScale = 1;
-    let noScale = 1;
     let noClicks = 0;
 
     const yesBtn = document.getElementById("yesBtn");
@@ -107,13 +106,8 @@
     noBtn.addEventListener("click", () => {
       noClicks++;
 
-      yesScale += 0.25;
-      noScale -= 0.12;
-
-      if (noScale < 0.3) noScale = 0.3;
-
+      yesScale += 0.25; // Only scale the Yes button
       yesBtn.style.transform = `scale(${yesScale})`;
-      noBtn.style.transform = `scale(${noScale})`;
 
       message.textContent =
         persuasionTexts[Math.min(noClicks - 1, persuasionTexts.length - 1)];
@@ -121,7 +115,7 @@
       if (noClicks >= 10) {
         noBtn.style.display = "none";
         yesBtn.style.transform = "scale(2.2)";
-        message.textContent = "Thanksssss 😌 Nakupendaaaaaaa 💖";
+        message.textContent = "No more No’s 😌 The universe has decided 💖";
       }
     });
 
@@ -137,4 +131,3 @@
 
 </body>
 </html>
-
