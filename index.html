@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      max-width: 400px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #e63946;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      padding: 14px 28px;
+    }
+
+    #yesBtn {
+      background-color: #e63946;
+      color: white;
+      transform: scale(1);
+    }
+
+    #noBtn {
+      background-color: #adb5bd;
+      color: #333;
+      transform: scale(1);
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #555;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    let yesScale = 1;
+    let noScale = 1;
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    const persuasionTexts = [
+      "Are you sure? 🥺",
+      "Think again… 💭",
+      "I’ll be really nice, I promise 😇",
+      "This is getting suspicious 👀",
+      "Okay but… we’d be cute though 💞",
+      "You know you want to 😌"
+    ];
+
+    noBtn.addEventListener("click", () => {
+      yesScale += 0.2;
+      noScale -= 0.1;
+
+      if (noScale < 0.3) noScale = 0.3;
+
+      yesBtn.style.transform = `scale(${yesScale})`;
+      noBtn.style.transform = `scale(${noScale})`;
+
+      const randomText =
+        persuasionTexts[Math.floor(Math.random() * persuasionTexts.length)];
+      message.textContent = randomText;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".card").innerHTML = `
+        <h1>Yayyyy!! 💘🥰</h1>
+        <p>You just made my day ❤️</p>
+        <p>Happy Valentine’s Day!</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
